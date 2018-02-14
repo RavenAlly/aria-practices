@@ -46,11 +46,14 @@ aria.Listbox.prototype.registerEvents = function () {
  *  If there is no activeDescendant, focus on the first option
  */
 aria.Listbox.prototype.setupFocus = function () {
-  if (this.activeDescendant) {
-    return;
-  }
-
-  this.focusFirstItem();
+    if (this.activeDescendant) {
+        var selectedItem = document.getElementById(this.activeDescendant);
+        if (selectedItem) {
+            this.focusItem(selectedItem);
+        }
+    } else {
+        this.focusFirstItem();
+    }
 };
 
 /**
